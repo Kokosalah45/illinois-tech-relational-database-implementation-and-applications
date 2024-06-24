@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS reservers (
   sid int not null references sailors(id),
   bid int not null references boats(id),
   deposit numeric check(deposit > 0),
+  reserve_day timestamptz default now(),
   day week_days not null,
   constraint sid_bid_pk primary key(sid,bid)
 );
@@ -29,3 +30,5 @@ CREATE TABLE IF NOT EXISTS captains (
    start_date timestamptz default now(),
    end_data timestamptz 
 );
+
+
